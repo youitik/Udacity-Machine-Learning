@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>boston_housing</title><script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/D7BDD9B7-FDC7-0149-AF72-B9B37829D5A6/main.js" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>boston_housing-v2</title><script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/D7BDD9B7-FDC7-0149-AF72-B9B37829D5A6/main.js" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11874,7 +11874,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Get Statistics</span>
@@ -11885,19 +11885,19 @@ div#notebook {
 <span class="k">print</span> <span class="s2">&quot;----------------------------------------------------------------&quot;</span>
 
 <span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="mi">105000</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="mi">1024800</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="mi">454342</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="mi">438900</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="mf">165340.27</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11959,9 +11959,9 @@ Statistics for Boston housing dataset:
 
 Minimum price: $105,000.00
 Maximum price: $1,024,800.00
-Mean price: $454,342.00
+Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.27
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -13335,7 +13335,8 @@ y3ADyMzMzMzMWoYbQGZmZmZm1jL+BisNB00uikJHAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>Having more training points usually decreases the assertiveness of the model in the training base, but in good models it increases the assertiveness in the test base. The increase in the number of points is beneficial to validate the <strong>applicability</strong> of the model.</p>
+<p>Having more training points usually decreases the assertiveness of the model in the training base, but in good models it increases the assertiveness in the test base. 
+Having more practice points is beneficial to a certain extent (approximately 300 points) for the test base, and then the tendency is for the score to stabilize on the training and test bases.</p>
 
 </div>
 </div>
@@ -13834,7 +13835,7 @@ JyIiIUNJT0REQoaSnoiIhAwlPRERCRn/DwgWCxMzc/7JAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>Depth 4. Because it has a higher score in the training bases and cross-validation.</li>
+<li>Depth 4. For it seems to be the point where both the training and validation score are close while the training score is high.</li>
 </ul>
 
 </div>
@@ -13865,7 +13866,12 @@ JyIiIUNJT0REQoaSnoiIhAwlPRERCRn/DwgWCxMzc/7JAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>Grid Search is a method to obtain the highest score model, changing the variables involved in a machine learning model. It can be applied to find the best combination for Suport Vector Machines between the Gamma and Kernel variables.</li>
+<li><p>Grid Search is a method to obtain the highest score model, changing the variables involved in a machine learning model. It can be applied to find the best combination for Suport Vector Machines between the Gamma and Kernel variables.</p>
+</li>
+<li><p>In order to determine which parameter is the best, an exhaustive search of the best combination of a specific subset chosen manually from the hyperparameters of an algorithm is performed.</p>
+</li>
+<li><p>GridSearchCV take a scoring parameter that controls what metric they apply to the estimators evaluated. All scorer objects follow the convention that higher return values are better than lower return values.</p>
+</li>
 </ul>
 
 </div>
@@ -13898,6 +13904,8 @@ JyIiIUNJT0REQoaSnoiIhAwlPRERCRn/DwgWCxMzc/7JAAAAAElFTkSuQmCC
 <li><p>KFold Cross Validation is a validation method in which the dataset is separated into k buckets and trained k times, each time using 1 different bucket as test set.</p>
 </li>
 <li><p>It benefits the grid search method because it increases the number of records for training of the model and allows to evidence if there are high bias or variance in the models.</p>
+</li>
+<li><p>The number of buckets used for training in each model is K - 1. The k results from the folds can then be averaged to produce a single estimate.</p>
 </li>
 </ul>
 
@@ -14032,6 +14040,9 @@ JyIiIUNJT0REQoaSnoiIhAwlPRERCRn/DwgWCxMzc/7JAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
+<ul>
+<li>Depth 4. It was the same value found in question 6.</li>
+</ul>
 
 </div>
 </div>
@@ -14117,6 +14128,112 @@ Predicted selling price for Client 3&#39;s home: $892,850.00
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">features</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RM</th>
+      <th>LSTAT</th>
+      <th>PTRATIO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>489.000000</td>
+      <td>489.000000</td>
+      <td>489.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>6.240288</td>
+      <td>12.939632</td>
+      <td>18.516564</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.643650</td>
+      <td>7.081990</td>
+      <td>2.111268</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>3.561000</td>
+      <td>1.980000</td>
+      <td>12.600000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.880000</td>
+      <td>7.370000</td>
+      <td>17.400000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>6.185000</td>
+      <td>11.690000</td>
+      <td>19.100000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.575000</td>
+      <td>17.120000</td>
+      <td>20.200000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>8.398000</td>
+      <td>37.970000</td>
+      <td>22.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14124,6 +14241,31 @@ Predicted selling price for Client 3&#39;s home: $892,850.00
 <p><strong>Answer: </strong>
 Would recommend selling at the price suggested by the model, as it follows the expected reality. (increase in price as
 number of rooms and price drop according to increase of poverty level and student-teacher ratio.)</p>
+<p>Comparing the clients with feature statistics:</p>
+<ul>
+<li>Client 2: (biggest price)<ul>
+<li>It has the lowest RM among the three. (below 25% of the overall sample)</li>
+<li>It has the largest LSTAT. (above 75% of the overall sample)</li>
+<li>It has the biggest PTRATIO. (at the upper limit)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Client 3: (lower price)<ul>
+<li>Has the highest RM (over 75% of the overall sample)</li>
+<li>It has the lowest LSTAT. (below 25% of the overall sample)</li>
+<li>It has the smallest PTRATIO (near the lower limit)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Client 1: (average price)<ul>
+<li>Has RM below 25% of the general sample.</li>
+<li>It has LSTAT close to the upper quartile (75%)</li>
+<li>It has PPTRATIO below 25% of the general sample.</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
